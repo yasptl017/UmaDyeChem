@@ -111,6 +111,13 @@
         #top-info-bar, #top-info-bar * {
             font-size: 0.75rem !important;
         }
+        /* Hide the native disclosure marker on mobile nav accordions (About / Products) across all browsers */
+        #mobile-menu summary::-webkit-details-marker {
+            display: none;
+        }
+        #mobile-menu summary {
+            list-style: none;
+        }
     </style>
     @stack('styles')
 </head>
@@ -307,14 +314,43 @@
         </div>
         <nav class="flex flex-col gap-1 text-slate-700 font-medium text-sm px-4 pt-3 pb-6">
             <a href="{{ route('home') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('home') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Home</a>
-            <a href="{{ route('about') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('about') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">About Us</a>
-            <a href="{{ route('products.index') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('products.*') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Our Products (10)</a>
+
+            <!-- About Dropdown (mobile accordion) -->
+            <details class="group">
+                <summary class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 cursor-pointer list-none {{ request()->routeIs('about', 'quality') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">
+                    <span>About Us</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200 group-open:rotate-180"></i>
+                </summary>
+                <div class="pl-4 pb-1 flex flex-col gap-1">
+                    <a href="{{ route('about') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('about') ? 'text-brand-700 font-semibold' : '' }}">Company Overview</a>
+                    <a href="{{ route('quality') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('quality') ? 'text-brand-700 font-semibold' : '' }}">Quality Standards</a>
+                    <a href="{{ route('careers.index') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('careers.*') ? 'text-brand-700 font-semibold' : '' }}">Careers</a>
+                </div>
+            </details>
+
+            <!-- Products Dropdown (mobile accordion) -->
+            <details class="group">
+                <summary class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 cursor-pointer list-none {{ request()->routeIs('products.*') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">
+                    <span>Our Products (10)</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200 group-open:rotate-180"></i>
+                </summary>
+                <div class="pl-4 pb-1 flex flex-col gap-1">
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-70') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Ammonium Bisulphite - 70%</a>
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-65') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Ammonium Bisulphite - 65%</a>
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-60') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Ammonium Bisulphite - 60%</a>
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-food-grade') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Food Grade Ammonium Bisulphite</a>
+                    <a href="{{ route('products.show', 'oxygen-scavenger') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Oxygen Scavenger Formulation</a>
+                    <a href="{{ route('products.show', 'ammonium-sulphite-solution-40') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Ammonium Sulphite Solution 40%</a>
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-nickel') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Nickel Catalyzed Bisulphite</a>
+                    <a href="{{ route('products.show', 'ammonium-bisulphite-cobalt') }}" class="px-3 py-2 rounded-lg text-sm hover:bg-brand-50 hover:text-brand-700">Cobalt Catalyzed Bisulphite</a>
+                    <a href="{{ route('products.index') }}" class="px-3 py-2 rounded-lg text-sm font-bold text-brand-700 hover:bg-brand-50">View All 10 Products <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></a>
+                </div>
+            </details>
+
             <a href="{{ route('industries') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('industries') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Industries Served</a>
-            <a href="{{ route('quality') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('quality') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Quality Standards</a>
             <a href="{{ route('export') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('export') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Global Export</a>
             <a href="{{ route('blog.index') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('blog.*') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Blog</a>
             <a href="{{ route('faq') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('faq') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">FAQ</a>
-            <a href="{{ route('careers.index') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('careers.*') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Careers</a>
             <a href="{{ route('contact') }}" class="px-3 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-700 {{ request()->routeIs('contact') ? 'bg-brand-50 font-bold text-brand-700' : '' }}">Contact Us</a>
             <div class="pt-3">
                 <a href="{{ route('contact') }}" class="w-full inline-flex justify-center items-center gap-2 px-5 py-3 bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-md">
