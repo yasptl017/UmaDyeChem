@@ -118,6 +118,19 @@
         #mobile-menu summary {
             list-style: none;
         }
+        /* Google Translate widget runs in the background only — our own dropdown is the visible UI */
+        #google_translate_element,
+        .goog-te-banner-frame,
+        .goog-te-gadget-icon,
+        .skiptranslate > iframe {
+            display: none !important;
+        }
+        body {
+            top: 0 !important;
+        }
+        body.translated-ltr, body.translated-rtl {
+            top: 0 !important;
+        }
     </style>
     @stack('styles')
 </head>
@@ -158,18 +171,18 @@
                     </button>
                     <div class="absolute right-0 top-full pt-2 w-48 opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-150 z-[60]">
                         <div class="bg-white text-slate-700 rounded-lg shadow-xl border border-slate-100 py-1.5 text-xs font-medium overflow-hidden max-h-80 overflow-y-auto">
-                            <button type="button" data-flag="fi-gb" data-lang-label="English" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-gb rounded-[2px]"></span> English</button>
-                            <button type="button" data-flag="fi-in" data-lang-label="हिन्दी" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-in rounded-[2px]"></span> हिन्दी <span class="text-slate-400 font-normal">(Hindi)</span></button>
-                            <button type="button" data-flag="fi-in" data-lang-label="ગુજરાતી" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-in rounded-[2px]"></span> ગુજરાતી <span class="text-slate-400 font-normal">(Gujarati)</span></button>
+                            <button type="button" data-gtcode="en" data-flag="fi-gb" data-lang-label="English" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-gb rounded-[2px]"></span> English</button>
+                            <button type="button" data-gtcode="hi" data-flag="fi-in" data-lang-label="हिन्दी" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-in rounded-[2px]"></span> हिन्दी <span class="text-slate-400 font-normal">(Hindi)</span></button>
+                            <button type="button" data-gtcode="gu" data-flag="fi-in" data-lang-label="ગુજરાતી" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-in rounded-[2px]"></span> ગુજરાતી <span class="text-slate-400 font-normal">(Gujarati)</span></button>
                             <div class="my-1 border-t border-slate-100"></div>
-                            <button type="button" data-flag="fi-cn" data-lang-label="中文" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-cn rounded-[2px]"></span> 中文 <span class="text-slate-400 font-normal">(Chinese)</span></button>
-                            <button type="button" data-flag="fi-sa" data-lang-label="العربية" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-sa rounded-[2px]"></span> العربية <span class="text-slate-400 font-normal">(Arabic)</span></button>
-                            <button type="button" data-flag="fi-fr" data-lang-label="Français" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-fr rounded-[2px]"></span> Français <span class="text-slate-400 font-normal">(French)</span></button>
-                            <button type="button" data-flag="fi-de" data-lang-label="Deutsch" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-de rounded-[2px]"></span> Deutsch <span class="text-slate-400 font-normal">(German)</span></button>
-                            <button type="button" data-flag="fi-es" data-lang-label="Español" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-es rounded-[2px]"></span> Español <span class="text-slate-400 font-normal">(Spanish)</span></button>
-                            <button type="button" data-flag="fi-ru" data-lang-label="Русский" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-ru rounded-[2px]"></span> Русский <span class="text-slate-400 font-normal">(Russian)</span></button>
-                            <button type="button" data-flag="fi-br" data-lang-label="Português" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-br rounded-[2px]"></span> Português <span class="text-slate-400 font-normal">(Portuguese)</span></button>
-                            <button type="button" data-flag="fi-jp" data-lang-label="日本語" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-jp rounded-[2px]"></span> 日本語 <span class="text-slate-400 font-normal">(Japanese)</span></button>
+                            <button type="button" data-gtcode="zh-CN" data-flag="fi-cn" data-lang-label="中文" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-cn rounded-[2px]"></span> 中文 <span class="text-slate-400 font-normal">(Chinese)</span></button>
+                            <button type="button" data-gtcode="ar" data-flag="fi-sa" data-lang-label="العربية" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-sa rounded-[2px]"></span> العربية <span class="text-slate-400 font-normal">(Arabic)</span></button>
+                            <button type="button" data-gtcode="fr" data-flag="fi-fr" data-lang-label="Français" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-fr rounded-[2px]"></span> Français <span class="text-slate-400 font-normal">(French)</span></button>
+                            <button type="button" data-gtcode="de" data-flag="fi-de" data-lang-label="Deutsch" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-de rounded-[2px]"></span> Deutsch <span class="text-slate-400 font-normal">(German)</span></button>
+                            <button type="button" data-gtcode="es" data-flag="fi-es" data-lang-label="Español" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-es rounded-[2px]"></span> Español <span class="text-slate-400 font-normal">(Spanish)</span></button>
+                            <button type="button" data-gtcode="ru" data-flag="fi-ru" data-lang-label="Русский" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-ru rounded-[2px]"></span> Русский <span class="text-slate-400 font-normal">(Russian)</span></button>
+                            <button type="button" data-gtcode="pt" data-flag="fi-br" data-lang-label="Português" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-br rounded-[2px]"></span> Português <span class="text-slate-400 font-normal">(Portuguese)</span></button>
+                            <button type="button" data-gtcode="ja" data-flag="fi-jp" data-lang-label="日本語" class="lang-option w-full text-left px-3.5 py-2 hover:bg-brand-50 hover:text-brand-700 transition-colors inline-flex items-center gap-2.5"><span class="fi fi-jp rounded-[2px]"></span> 日本語 <span class="text-slate-400 font-normal">(Japanese)</span></button>
                         </div>
                     </div>
                 </div>
@@ -540,18 +553,49 @@
             mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
         }
 
-        // Language Switcher (UI only — wire up to real translations/locale routes as needed)
+        // Language Switcher — actually translates the page via Google Translate (triggered by our own dropdown)
+        function setGoogTransCookie(code) {
+            const domain = window.location.hostname;
+            const value = code === 'en' ? '' : ('/en/' + code);
+            document.cookie = 'googtrans=' + value + '; path=/';
+            document.cookie = 'googtrans=' + value + '; path=/; domain=' + domain;
+            document.cookie = 'googtrans=' + value + '; path=/; domain=.' + domain;
+        }
+
         document.querySelectorAll('.lang-option').forEach((option) => {
             option.addEventListener('click', () => {
+                const code = option.getAttribute('data-gtcode');
                 const label = option.getAttribute('data-lang-label');
                 const flag = option.getAttribute('data-flag');
-                const currentLangEl = document.getElementById('current-lang');
-                const currentFlagEl = document.getElementById('current-lang-flag');
-                if (currentLangEl) currentLangEl.textContent = label;
-                if (currentFlagEl && flag) currentFlagEl.className = 'fi ' + flag + ' rounded-[2px]';
+
+                localStorage.setItem('preferredLangLabel', label);
+                localStorage.setItem('preferredLangFlag', flag);
+
+                setGoogTransCookie(code);
+                window.location.reload();
             });
         });
+
+        // Restore the chosen flag/label on every page after a translation reload
+        (function restoreLangDisplay() {
+            const savedLabel = localStorage.getItem('preferredLangLabel');
+            const savedFlag = localStorage.getItem('preferredLangFlag');
+            const currentLangEl = document.getElementById('current-lang');
+            const currentFlagEl = document.getElementById('current-lang-flag');
+            if (savedLabel && currentLangEl) currentLangEl.textContent = savedLabel;
+            if (savedFlag && currentFlagEl) currentFlagEl.className = 'fi ' + savedFlag + ' rounded-[2px]';
+        })();
     </script>
+
+    <!-- Google Translate (background engine for the language switcher above) -->
+    <div id="google_translate_element"></div>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     @stack('scripts')
 </body>
 </html>

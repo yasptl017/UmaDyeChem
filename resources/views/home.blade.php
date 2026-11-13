@@ -416,7 +416,7 @@
 
                 <div class="grid grid-cols-2 gap-4 pt-2">
                     <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                        <div class="text-lg font-bold text-navy-900">Unava Works</div>
+                        <div class="text-lg font-bold text-navy-900">Factory Address</div>
                         <div class="text-xs text-slate-500 mt-1">Survey No. 1283/1291, Mehsana Highway Plant with large bulk tank farm</div>
                     </div>
                     <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">

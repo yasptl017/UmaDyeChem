@@ -169,7 +169,7 @@
                     Manufacturing Infrastructure
                 </span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-white">
-                    Unava Works & Processing Capabilities
+                    Manufacturing Plant & Processing Capabilities
                 </h2>
                 <p class="text-slate-300 text-sm leading-relaxed">
                     Our manufacturing facility at Survey No. 1283/1291, Unjha-Unava Highway incorporates dedicated gas scrubbing and reaction towers, precision mass-flow dosing, and stainless steel liquid bulk holding tanks.
