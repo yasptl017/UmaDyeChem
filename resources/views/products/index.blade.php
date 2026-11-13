@@ -143,32 +143,32 @@
                 <p class="text-xs text-slate-400 mt-1">Side-by-side comparison of active concentrations, specific gravities, and typical industrial usages.</p>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse">
+                <table class="w-full text-left text-xs border-collapse border border-slate-200">
                     <thead>
-                        <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                            <th class="py-3 px-4">Product Name</th>
-                            <th class="py-3 px-4">Chemical Formula</th>
-                            <th class="py-3 px-4">Active Assay</th>
-                            <th class="py-3 px-4">Specific Gravity</th>
-                            <th class="py-3 px-4">pH (Neat)</th>
-                            <th class="py-3 px-4">Primary Uses</th>
-                            <th class="py-3 px-4 text-right">Action</th>
+                        <tr class="bg-slate-100 text-slate-700 font-bold">
+                            <th class="py-3 px-4 border border-slate-200">Product Name</th>
+                            <th class="py-3 px-4 border border-slate-200">Chemical Formula</th>
+                            <th class="py-3 px-4 border border-slate-200">Active Assay</th>
+                            <th class="py-3 px-4 border border-slate-200">Specific Gravity</th>
+                            <th class="py-3 px-4 border border-slate-200">pH (Neat)</th>
+                            <th class="py-3 px-4 border border-slate-200">Primary Uses</th>
+                            <th class="py-3 px-4 border border-slate-200 text-right">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tbody class="text-slate-700">
                         @foreach($products as $p)
                             <tr class="hover:bg-slate-50/80 transition-colors">
-                                <td class="py-3 px-4 font-bold text-slate-900">
+                                <td class="py-3 px-4 border border-slate-200 font-bold text-slate-900">
                                     <a href="{{ route('products.show', $p->slug) }}" class="hover:text-brand-700">
                                         {{ $p->name }}
                                     </a>
                                 </td>
-                                <td class="py-3 px-4 font-mono text-slate-600">{{ $p->molecular_formula ?? 'NH4HSO3' }}</td>
-                                <td class="py-3 px-4 font-semibold text-brand-700">{{ $p->concentration ?? '-' }}</td>
-                                <td class="py-3 px-4">{{ $p->specific_gravity ?? '-' }}</td>
-                                <td class="py-3 px-4">{{ $p->ph_value ?? '4.0 - 5.5' }}</td>
-                                <td class="py-3 px-4 max-w-xs truncate text-slate-500">{{ $p->short_description }}</td>
-                                <td class="py-3 px-4 text-right">
+                                <td class="py-3 px-4 border border-slate-200 font-mono text-slate-600">{{ $p->molecular_formula ?? 'NH4HSO3' }}</td>
+                                <td class="py-3 px-4 border border-slate-200 font-semibold text-brand-700">{{ $p->concentration ?? '-' }}</td>
+                                <td class="py-3 px-4 border border-slate-200">{{ $p->specific_gravity ?? '-' }}</td>
+                                <td class="py-3 px-4 border border-slate-200">{{ $p->ph_value ?? '4.0 - 5.5' }}</td>
+                                <td class="py-3 px-4 border border-slate-200 max-w-xs truncate text-slate-500">{{ $p->short_description }}</td>
+                                <td class="py-3 px-4 border border-slate-200 text-right">
                                     <a href="{{ route('products.show', $p->slug) }}" class="text-brand-700 hover:text-brand-900 font-bold">
                                         Specs <i class="fa-solid fa-angle-right text-[10px]"></i>
                                     </a>

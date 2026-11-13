@@ -176,7 +176,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo & Brand Info -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3.5 group">
-                    <div class="h-14 w-auto flex items-center justify-center bg-white p-1 rounded-lg border border-slate-200/60 shadow-xs group-hover:border-brand-500 transition-colors">
+                    <div class="h-14 w-auto flex items-center justify-center">
                         <img src="{{ asset('logo.png') }}" alt="Uma Dye Chem Logo" class="h-12 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=Uma+Dye+Chem'">
                     </div>
                     <span class="block text-xl sm:text-2xl font-extrabold font-display leading-none tracking-tight whitespace-nowrap">
