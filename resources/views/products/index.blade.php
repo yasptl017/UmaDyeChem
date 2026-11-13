@@ -74,29 +74,29 @@
                         </p>
 
                         <!-- Specification Table Snippet -->
-                        <div class="bg-slate-50 rounded-xl p-3.5 space-y-1.5 text-xs border border-slate-100">
+                        <div class="bg-slate-50 rounded-xl p-3.5 space-y-2 text-xs border border-slate-100">
                             @if($product->molecular_formula)
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Formula:</span>
-                                    <span class="font-mono font-semibold text-slate-800">{{ $product->molecular_formula }}</span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-0.5 sm:gap-2">
+                                    <span class="text-slate-500 flex-shrink-0">Formula:</span>
+                                    <span class="font-mono font-semibold text-slate-800 break-words sm:text-right">{{ $product->molecular_formula }}</span>
                                 </div>
                             @endif
                             @if($product->concentration)
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Concentration / Assay:</span>
-                                    <span class="font-bold text-brand-700">{{ $product->concentration }}</span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-0.5 sm:gap-2">
+                                    <span class="text-slate-500 flex-shrink-0">Concentration / Assay:</span>
+                                    <span class="font-bold text-brand-700 break-words sm:text-right">{{ $product->concentration }}</span>
                                 </div>
                             @endif
                             @if($product->specific_gravity)
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Specific Gravity:</span>
-                                    <span class="font-semibold text-slate-800">{{ $product->specific_gravity }}</span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-0.5 sm:gap-2">
+                                    <span class="text-slate-500 flex-shrink-0">Specific Gravity:</span>
+                                    <span class="font-semibold text-slate-800 break-words sm:text-right">{{ $product->specific_gravity }}</span>
                                 </div>
                             @endif
                             @if($product->grade)
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Standard Grade:</span>
-                                    <span class="text-slate-700">{{ $product->grade }}</span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-0.5 sm:gap-2">
+                                    <span class="text-slate-500 flex-shrink-0">Standard Grade:</span>
+                                    <span class="text-slate-700 break-words sm:text-right">{{ $product->grade }}</span>
                                 </div>
                             @endif
                         </div>
@@ -143,7 +143,7 @@
                 <p class="text-xs text-slate-400 mt-1">Side-by-side comparison of active concentrations, specific gravities, and typical industrial usages.</p>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse border border-slate-200">
+                <table class="w-full min-w-[800px] text-left text-xs border-collapse border border-slate-200">
                     <thead>
                         <tr class="bg-slate-100 text-slate-700 font-bold">
                             <th class="py-3 px-4 border border-slate-200">Product Name</th>
