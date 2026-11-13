@@ -118,18 +118,32 @@
         #mobile-menu summary {
             list-style: none;
         }
-        /* Google Translate widget runs in the background only — our own dropdown is the visible UI */
-        #google_translate_element,
+        /* Google Translate widget runs in the background only — our own dropdown is the visible UI.
+           Positioned off-screen (not display:none) so its internal <select> still initializes correctly. */
+        #google_translate_element {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
         .goog-te-banner-frame,
         .goog-te-gadget-icon,
-        .skiptranslate > iframe {
+        .goog-tooltip,
+        .goog-tooltip:hover,
+        .goog-text-highlight,
+        #goog-gt-tt,
+        .skiptranslate iframe {
             display: none !important;
+            visibility: hidden !important;
         }
-        body {
+        body, html {
             top: 0 !important;
+            position: static !important;
         }
-        body.translated-ltr, body.translated-rtl {
-            top: 0 !important;
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
         }
     </style>
     @stack('styles')
@@ -553,13 +567,26 @@
             mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
         }
 
-        // Language Switcher — actually translates the page via Google Translate (triggered by our own dropdown)
-        function setGoogTransCookie(code) {
-            const domain = window.location.hostname;
-            const value = code === 'en' ? '' : ('/en/' + code);
-            document.cookie = 'googtrans=' + value + '; path=/';
-            document.cookie = 'googtrans=' + value + '; path=/; domain=' + domain;
-            document.cookie = 'googtrans=' + value + '; path=/; domain=.' + domain;
+        // Language Switcher — drives the hidden Google Translate widget directly (no reload, no cookie quirks)
+        function fireChangeEvent(el) {
+            try {
+                const evt = document.createEvent('HTMLEvents');
+                evt.initEvent('change', true, true);
+                el.dispatchEvent(evt);
+            } catch (e) {
+                el.dispatchEvent(new Event('change'));
+            }
+        }
+
+        function applyTranslation(code, attempt) {
+            attempt = attempt || 0;
+            const combo = document.querySelector('select.goog-te-combo');
+            if (!combo) {
+                if (attempt < 40) { setTimeout(() => applyTranslation(code, attempt + 1), 250); }
+                return;
+            }
+            combo.value = code;
+            fireChangeEvent(combo);
         }
 
         document.querySelectorAll('.lang-option').forEach((option) => {
@@ -568,22 +595,31 @@
                 const label = option.getAttribute('data-lang-label');
                 const flag = option.getAttribute('data-flag');
 
+                const currentLangEl = document.getElementById('current-lang');
+                const currentFlagEl = document.getElementById('current-lang-flag');
+                if (currentLangEl) currentLangEl.textContent = label;
+                if (currentFlagEl && flag) currentFlagEl.className = 'fi ' + flag + ' rounded-[2px]';
+
                 localStorage.setItem('preferredLangLabel', label);
                 localStorage.setItem('preferredLangFlag', flag);
+                localStorage.setItem('preferredLangCode', code);
 
-                setGoogTransCookie(code);
-                window.location.reload();
+                applyTranslation(code);
             });
         });
 
-        // Restore the chosen flag/label on every page after a translation reload
-        (function restoreLangDisplay() {
+        // Re-apply the saved language choice on every new page load, and restore the dropdown's flag/label
+        (function restoreLangOnLoad() {
             const savedLabel = localStorage.getItem('preferredLangLabel');
             const savedFlag = localStorage.getItem('preferredLangFlag');
+            const savedCode = localStorage.getItem('preferredLangCode');
             const currentLangEl = document.getElementById('current-lang');
             const currentFlagEl = document.getElementById('current-lang-flag');
             if (savedLabel && currentLangEl) currentLangEl.textContent = savedLabel;
             if (savedFlag && currentFlagEl) currentFlagEl.className = 'fi ' + savedFlag + ' rounded-[2px]';
+            if (savedCode && savedCode !== 'en') {
+                applyTranslation(savedCode);
+            }
         })();
     </script>
 
