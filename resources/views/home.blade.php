@@ -14,7 +14,7 @@
             <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                 <!-- Badges -->
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold tracking-wide shadow-inner">
-                    <span>PIONEER CHEMICAL MANUFACTURER &bull; GUJARAT, INDIA</span>
+                    <span>PIONEER CHEMICAL MANUFACTURER, GUJARAT, INDIA</span>
                 </div>
 
                 <!-- Main Heading -->
