@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Contact Us & Request Chemical Quote | Uma Dye Chem Unjha')
-@section('meta_description', 'Get in touch with Uma Dye Chem. Factory address in Unava, Unjha, Gujarat. Phone: +91-2767-255893, Email: umadyechem.industries@gmail.com.')
+@section('meta_description', 'Get in touch with Uma Dye Chem. Factory address in Unava, Unjha, Gujarat. Phone: ' . $siteSettings['phone'] . ', Email: ' . $siteSettings['email'] . '.')
 
 @section('content')
 

@@ -91,8 +91,8 @@
                     <a href="#inquiry-section" class="w-full py-3 bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 text-white font-bold text-xs rounded-xl text-center shadow-md transition-all">
                         <i class="fa-solid fa-paper-plane mr-1.5"></i> Request Quotation for this Chemical
                     </a>
-                    <a href="tel:+912767255893" class="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl text-center border border-white/20 transition-all">
-                        <i class="fa-solid fa-phone mr-1.5"></i> Call Plant: +91-2767-255893
+                    <a href="tel:+{{ preg_replace('/\D/', '', $siteSettings['phone']) }}" class="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl text-center border border-white/20 transition-all">
+                        <i class="fa-solid fa-phone mr-1.5"></i> Call Plant: {{ $siteSettings['phone'] }}
                     </a>
                 </div>
             </div>
@@ -342,7 +342,7 @@
                     <div class="mt-4 pt-3 border-t border-slate-100 text-center">
                         <span class="text-[11px] text-slate-400">Or reach sales directly:</span>
                         <div class="text-xs font-bold text-brand-700 mt-1">
-                            <a href="tel:+912767255893">+91-2767-255893</a> &bull; <a href="mailto:umadyechem.industries@gmail.com">Email Us</a>
+                            <a href="tel:+{{ preg_replace('/\D/', '', $siteSettings['phone']) }}">{{ $siteSettings['phone'] }}</a> &bull; <a href="mailto:{{ $siteSettings['email'] }}">Email Us</a>
                         </div>
                     </div>
                 </div>

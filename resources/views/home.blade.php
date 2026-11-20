@@ -489,8 +489,8 @@
                         We supply Ammonium Bisulphite in custom concentrations and packaging configurations tailored to your specific project needs. Call our Gujarat sales office or submit an inquiry.
                     </p>
                     <div class="flex flex-wrap items-center gap-6 pt-2 text-xs">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-cyan-400"></i> +91-2767-255893</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-envelope text-cyan-400"></i> umadyechem.industries@gmail.com</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-cyan-400"></i> {{ $siteSettings['phone'] }}</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-envelope text-cyan-400"></i> {{ $siteSettings['email'] }}</span>
                     </div>
                 </div>
 
@@ -498,7 +498,7 @@
                     <a href="{{ route('contact') }}" class="px-8 py-4 bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-700 hover:to-cyan-600 text-white font-bold text-center text-sm rounded-xl shadow-lg transition-all">
                         <i class="fa-solid fa-envelope mr-2"></i> Submit Inquiry Online
                     </a>
-                    <a href="tel:+912767255893" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-center text-sm rounded-xl transition-all">
+                    <a href="tel:+{{ preg_replace('/\D/', '', $siteSettings['phone']) }}" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-center text-sm rounded-xl transition-all">
                         <i class="fa-solid fa-phone mr-2"></i> Call Sales Desk
                     </a>
                 </div>

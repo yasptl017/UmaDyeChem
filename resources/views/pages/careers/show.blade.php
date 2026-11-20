@@ -68,7 +68,7 @@
         <div class="bg-brand-50 border border-brand-200 rounded-2xl p-6 text-center">
             <h3 class="font-bold text-navy-900 mb-2">Interested in this role?</h3>
             <p class="text-sm text-slate-600 mb-4">Send your resume and we'll get back to you.</p>
-            <a href="mailto:umadyechem.industries@gmail.com?subject=Job%20Application%3A%20{{ urlencode($listing->title) }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-700 hover:bg-brand-800 text-white font-semibold text-sm rounded-xl shadow-md transition-colors">
+            <a href="mailto:{{ $siteSettings['email'] }}?subject=Job%20Application%3A%20{{ urlencode($listing->title) }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-700 hover:bg-brand-800 text-white font-semibold text-sm rounded-xl shadow-md transition-colors">
                 <i class="fa-solid fa-paper-plane text-xs"></i> Apply via Email
             </a>
         </div>

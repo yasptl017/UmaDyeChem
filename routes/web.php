@@ -43,7 +43,7 @@ Route::get('/careers', [CareerController::class, 'index'])->name('careers.index'
 Route::get('/careers/{slug}', [CareerController::class, 'show'])->name('careers.show');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:5,1');
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 |--------------------------------------------------------------------------
 */
 Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit')->middleware('throttle:5,1');
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 /*
