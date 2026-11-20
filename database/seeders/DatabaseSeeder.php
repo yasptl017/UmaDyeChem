@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyEmail;
 use App\Models\ContactPerson;
 use App\Models\Product;
 use App\Models\SiteSetting;
@@ -491,7 +492,7 @@ Petrochemical Complexes",
             Product::updateOrCreate(['slug' => $pData['slug']], $pData);
         }
 
-        // Department Contact Persons
+        // Named Contact Persons (personal phone/email tied to an individual)
         $contactPersons = [
             [
                 'name' => 'Mr. Setu Patel',
@@ -500,40 +501,27 @@ Petrochemical Complexes",
                 'email' => null,
                 'sort_order' => 1,
             ],
-            [
-                'name' => null,
-                'label' => 'Domestic Inquiry',
-                'phone' => null,
-                'email' => 'umadyechem1980@gmail.com',
-                'sort_order' => 2,
-            ],
-            [
-                'name' => null,
-                'label' => 'Information',
-                'phone' => null,
-                'email' => 'info@umadyechem.com',
-                'sort_order' => 3,
-            ],
-            [
-                'name' => null,
-                'label' => 'Accounts',
-                'phone' => null,
-                'email' => 'accounts@umadyechem.com',
-                'sort_order' => 4,
-            ],
-            [
-                'name' => null,
-                'label' => 'Export Inquiry',
-                'phone' => null,
-                'email' => 'export@umadyechem.com',
-                'sort_order' => 5,
-            ],
         ];
 
         foreach ($contactPersons as $cData) {
             ContactPerson::updateOrCreate(
                 ['label' => $cData['label']],
                 $cData + ['is_active' => true]
+            );
+        }
+
+        // Company Department Emails (not tied to any individual)
+        $companyEmails = [
+            ['label' => 'Domestic Inquiry', 'email' => 'umadyechem1980@gmail.com', 'sort_order' => 1],
+            ['label' => 'Information', 'email' => 'info@umadyechem.com', 'sort_order' => 2],
+            ['label' => 'Accounts', 'email' => 'accounts@umadyechem.com', 'sort_order' => 3],
+            ['label' => 'Export Inquiry', 'email' => 'export@umadyechem.com', 'sort_order' => 4],
+        ];
+
+        foreach ($companyEmails as $eData) {
+            CompanyEmail::updateOrCreate(
+                ['label' => $eData['label']],
+                $eData + ['is_active' => true]
             );
         }
     }

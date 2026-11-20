@@ -201,6 +201,25 @@
                     </div>
                 @endif
 
+                @if($companyEmails->isNotEmpty())
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-5">
+                        <h3 class="text-lg font-bold font-display text-navy-900 border-b border-slate-100 pb-3">
+                            Company Emails
+                        </h3>
+
+                        <div class="divide-y divide-slate-100">
+                            @foreach($companyEmails as $item)
+                                <div class="py-3 first:pt-0 last:pb-0 flex items-center justify-between gap-3">
+                                    <div class="font-bold text-navy-900 text-xs">{{ $item->label }}</div>
+                                    <a href="mailto:{{ $item->email }}" class="inline-flex items-center gap-1.5 text-brand-700 font-semibold text-xs hover:underline break-all">
+                                        <i class="fa-solid fa-envelope text-[10px]"></i> {{ $item->email }}
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 <!-- Google Map Embed Card -->
                 <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
                     <div class="p-4 bg-slate-100 border-b border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-2">

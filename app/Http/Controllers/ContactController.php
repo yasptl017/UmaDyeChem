@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyEmail;
 use App\Models\ContactPerson;
 use App\Models\Inquiry;
 use App\Models\Product;
@@ -14,8 +15,9 @@ class ContactController extends Controller
         $products = Product::active()->orderBy('sort_order')->get();
         $selectedProductId = $request->query('product_id');
         $contactPersons = ContactPerson::active()->orderBy('sort_order')->get();
+        $companyEmails = CompanyEmail::active()->orderBy('sort_order')->get();
 
-        return view('contact', compact('products', 'selectedProductId', 'contactPersons'));
+        return view('contact', compact('products', 'selectedProductId', 'contactPersons', 'companyEmails'));
     }
 
     public function store(Request $request)
