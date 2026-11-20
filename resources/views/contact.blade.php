@@ -170,6 +170,37 @@
                     </div>
                 </div>
 
+                @if($contactPersons->isNotEmpty())
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-5">
+                        <h3 class="text-lg font-bold font-display text-navy-900 border-b border-slate-100 pb-3">
+                            Department Contacts
+                        </h3>
+
+                        <div class="divide-y divide-slate-100">
+                            @foreach($contactPersons as $person)
+                                <div class="py-3.5 first:pt-0 last:pb-0">
+                                    <div class="font-bold text-navy-900 text-sm">{{ $person->label }}</div>
+                                    @if($person->name)
+                                        <div class="text-xs text-slate-500">{{ $person->name }}</div>
+                                    @endif
+                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1.5 text-xs">
+                                        @if($person->phone)
+                                            <a href="tel:+{{ preg_replace('/\D/', '', $person->phone) }}" class="inline-flex items-center gap-1.5 text-brand-700 font-semibold hover:underline">
+                                                <i class="fa-solid fa-phone text-[10px]"></i> {{ $person->phone }}
+                                            </a>
+                                        @endif
+                                        @if($person->email)
+                                            <a href="mailto:{{ $person->email }}" class="inline-flex items-center gap-1.5 text-brand-700 font-semibold hover:underline break-all">
+                                                <i class="fa-solid fa-envelope text-[10px]"></i> {{ $person->email }}
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 <!-- Google Map Embed Card -->
                 <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
                     <div class="p-4 bg-slate-100 border-b border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-2">

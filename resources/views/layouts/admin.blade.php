@@ -147,6 +147,11 @@
                     <span>Partners & Leadership</span>
                 </a>
 
+                <a href="{{ route('admin.contact-persons.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('admin.contact-persons.*') ? 'bg-brand-700 text-white shadow-sm' : 'hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-address-book w-5 text-center"></i>
+                    <span>Contact Persons</span>
+                </a>
+
                 <div class="pt-4 text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 py-2">Configuration</div>
 
                 <a href="{{ route('admin.settings.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('admin.settings.*') ? 'bg-brand-700 text-white shadow-sm' : 'hover:bg-slate-800 hover:text-white' }}">

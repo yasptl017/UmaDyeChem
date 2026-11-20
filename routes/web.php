@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\Admin\ExportCountryController as AdminExportCountryController;
 use App\Http\Controllers\Admin\PartnerController as AdminPartnerController;
+use App\Http\Controllers\Admin\ContactPersonController as AdminContactPersonController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +80,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     // Partners / Leadership Team Management
     Route::resource('partners', AdminPartnerController::class)->except(['show']);
+    Route::resource('contact-persons', AdminContactPersonController::class)->except(['show']);
 
     // Inquiries Management
     Route::get('/inquiries', [AdminInquiryController::class, 'index'])->name('inquiries.index');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ContactPerson;
 use App\Models\Product;
 use App\Models\SiteSetting;
 use App\Models\User;
@@ -488,6 +489,52 @@ Petrochemical Complexes",
 
         foreach ($products as $pData) {
             Product::updateOrCreate(['slug' => $pData['slug']], $pData);
+        }
+
+        // Department Contact Persons
+        $contactPersons = [
+            [
+                'name' => 'Mr. Setu Patel',
+                'label' => 'Managing Director',
+                'phone' => '+91-97252 45799',
+                'email' => null,
+                'sort_order' => 1,
+            ],
+            [
+                'name' => null,
+                'label' => 'Domestic Inquiry',
+                'phone' => null,
+                'email' => 'umadyechem1980@gmail.com',
+                'sort_order' => 2,
+            ],
+            [
+                'name' => null,
+                'label' => 'Information',
+                'phone' => null,
+                'email' => 'info@umadyechem.com',
+                'sort_order' => 3,
+            ],
+            [
+                'name' => null,
+                'label' => 'Accounts',
+                'phone' => null,
+                'email' => 'accounts@umadyechem.com',
+                'sort_order' => 4,
+            ],
+            [
+                'name' => null,
+                'label' => 'Export Inquiry',
+                'phone' => null,
+                'email' => 'export@umadyechem.com',
+                'sort_order' => 5,
+            ],
+        ];
+
+        foreach ($contactPersons as $cData) {
+            ContactPerson::updateOrCreate(
+                ['label' => $cData['label']],
+                $cData + ['is_active' => true]
+            );
         }
     }
 }
